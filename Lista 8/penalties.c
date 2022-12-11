@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-    int n, golsa =0, golsb=0, penaltBatidos=0, penaltieDecisivo;
+    int n, golsa =0, golsb=0, penaltBatidos=0;
     scanf("%d", &n);
     char ptsa[n], ptsb[n];
     scanf("%s %s", ptsa, ptsb);
@@ -11,9 +11,7 @@ int main(){
             golsa++;
         }
         penaltBatidos++;
-
-        if (golsa - golsb > n - penaltBatidos || golsb - golsa > n - penaltBatidos){
-            penaltieDecisivo = penaltBatidos;
+        if (golsa - golsb > 2*n - penaltBatidos || golsb - golsa > n *2 - penaltBatidos){
             break;
         } 
 
@@ -21,16 +19,9 @@ int main(){
             golsb++;
         }
         penaltBatidos++;
-
-        printf("ptsa[i] = %d\n", ptsa[i]);
-        printf("ptsb[i] = %d\n", ptsb[i]);
-
-        
-        if (golsa - golsb > n - penaltBatidos || golsb - golsa > n - penaltBatidos){
-            penaltieDecisivo = penaltBatidos;
+        if (golsa - golsb > 2*n - penaltBatidos || golsb - golsa > n *2 - penaltBatidos-1){
             break;
         } 
     }
-    printf("gols a = %d gols b = %d\n", golsa, golsb);
-    printf("%d", penaltieDecisivo);
+    printf("%d", penaltBatidos);
 }
