@@ -1,27 +1,35 @@
 #include <stdio.h>
 
 int main(){
-    int n, golsa =0, golsb=0, penaltBatidos=0;
+    int n, golsa=0, golsb=0, rodadas=0;
     scanf("%d", &n);
-    char ptsa[n], ptsb[n];
+    char ptsa[n+1], ptsb[n+1];
+    int penaltBatidosA=n, penaltBatidosB=n;
     scanf("%s %s", ptsa, ptsb);
 
     for (int i=0; i<n; i++){
-        if (ptsa[i] == 111){
+        if (ptsa[i] == 'o'){
             golsa++;
         }
-        penaltBatidos++;
-        if (golsa - golsb > 2*n - penaltBatidos || golsb - golsa > n *2 - penaltBatidos){
+        penaltBatidosA--;
+        rodadas++;
+        if (golsa > golsb + penaltBatidosB || golsb > golsa + penaltBatidosA){
             break;
         } 
 
-        if (ptsb[i] == 111){
+        if (ptsb[i] == 'o'){
             golsb++;
         }
-        penaltBatidos++;
-        if (golsa - golsb > 2*n - penaltBatidos || golsb - golsa > n *2 - penaltBatidos-1){
+        penaltBatidosB--;
+        rodadas++;
+        if (golsa > golsb + penaltBatidosB || golsb > golsa + penaltBatidosA){
             break;
-        } 
+        }
     }
-    printf("%d", penaltBatidos);
+
+    if (golsa == golsb){
+        printf("Empate\n");
+    } else{
+        printf("%d\n", rodadas);
+    }
 }
