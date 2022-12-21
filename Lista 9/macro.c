@@ -58,12 +58,15 @@ int bb(Item *v,int l , int r,Item b){//busca binaria , Item b é o número a ser
         return printf("-1");//se rodar todo o vetor e não achar o Item b printa -1
     }
     int meio = (l+r)/2;
+    
     if(eq(b,v[meio])){
-        return printf("%d\n",&v[meio]);//achou printa o local de memória dele
-    }else if(less(b,v[meio])) {//divide o vetor na parte a esquerda para procurar o número , esse laço divide quantas vezes for necessaria ate achar o b ou terminar  vetor
-        return bb(v,l,meio-1,b);//chama a busca binaria com a metadade a esquerda do vetor
-    }else if(less(v[meio],b)){//divide o vetor na parte a direita para procurar o número , esse laço divide quantas vezes for necessaria ate achar o b ou terminar  vetor
-        return bb(v,meio+1,r,b);//chama a busca binaria com a metadade a direita do vetor
+        return printf("%d\n",&v[meio]);             //achou printa o local de memória dele
+    }
+    else if(less(b,v[meio])) {                  //divide o vetor na parte a esquerda para procurar o número , esse laço divide quantas vezes for necessaria ate achar o b ou terminar  vetor
+        return bb(v,l,meio-1,b);                //chama a busca binaria com a metadade a esquerda do vetor
+    }
+    else if(less(v[meio],b)){                      //divide o vetor na parte a direita para procurar o número , esse laço divide quantas vezes for necessaria ate achar o b ou terminar  vetor
+        return bb(v,meio+1,r,b);                    //chama a busca binaria com a metadade a direita do vetor
     }
     
 }
