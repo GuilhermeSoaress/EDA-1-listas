@@ -9,8 +9,8 @@ typedef int Item;
                         a = b; \
                         b = tt
 
-void merge(Item *V, int l, int m, int r)
-{
+void merge(Item *V, int l, int m, int r){
+
   Item *R=malloc(sizeof(Item)*(r-l+1));
   int i=l,j=m+1,k=0;
 
@@ -34,8 +34,8 @@ void merge(Item *V, int l, int m, int r)
   free(R);
 }
 
-void mergesort(Item *V,int l, int r)
-{
+void mergesort(Item *V,int l, int r){
+  
   if (l>= r) return;
   int meio=(l+r)/2;
   mergesort(V,l,meio);
